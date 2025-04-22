@@ -1,0 +1,116 @@
+/* Menu.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu-container {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-heading {
+    font-size: 2rem;
+    text-align: center;
+    color: #1f2937;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+.menu-search {
+    width: 80%;
+    margin: 1rem auto 1.5rem;
+    display: block;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.menu-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.menu-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.menu-info {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-title {
+    font-size: 1.3rem;
+    color: #111827;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.menu-description {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.4;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.menu-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #10b981;
+    text-align: right;
+}
+
+/* Status messages */
+.status-message {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 2rem;
+    color: #374151;
+}
+
+.status-message.error {
+    color: #ef4444;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .menu-heading {
+        font-size: 2.2rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .menu-card {
+        max-width: 100%;
+    }
+}

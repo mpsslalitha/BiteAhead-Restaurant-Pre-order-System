@@ -1,0 +1,13 @@
+{
+  "short_name": "Pre-Order",
+  "name": "Restaurant Pre-Order",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#F37254",
+  "background_color": "#ffffff",
+  "serviceworker": {
+    "src": "/sw.js",
+    "scope": "/",
+    "use_cache": false
+  }
+}

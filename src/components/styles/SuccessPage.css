@@ -1,0 +1,38 @@
+/* styles/SuccessPage.css */
+.success-container {
+    text-align: center;
+    margin: 4rem auto;
+    padding: 2rem;
+    max-width: 600px;
+    background-color: #f0fdf4;
+    border: 1px solid #34d399;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.success-container h2 {
+    font-size: 2rem;
+    color: #059669;
+    margin-bottom: 1rem;
+}
+
+.success-container p {
+    font-size: 1.1rem;
+    color: #374151;
+    margin-bottom: 2rem;
+}
+
+.success-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #059669;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.success-container button:hover {
+    background-color: #047857;
+}

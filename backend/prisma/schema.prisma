@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Restaurant {
+  id   String     @id @default(uuid())
+  name String
+  menu MenuItem[]
+}
+
+model MenuItem {
+  id           String             @id @default(uuid())
+  name         String
+  description  String?
+  price        Float
+  imageUrl     String?
+  restaurant   Restaurant         @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId String
+  preOrders    PreOrderMenuItem[]
+}
+
+model PreOrder {
+  id          String             @id @default(uuid())
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  userName    String
+  userEmail   String
+  userPhone   String
+  arrivalTime DateTime
+  totalAmount Float
+  reason      String?
+  paidAmount  Float              @default(0)
+  status      String             @default("pending") // "pending", "accepted", "rejected"
+  menuItems   PreOrderMenuItem[]
+  createdAt   DateTime           @default(now())
+
+  // ✅ Corrected Payment & Refund Relations
+  payment Payment? @relation("PreOrderPayment")
+  refund  Refund?  @relation("PreOrderRefund")
+}
+
+model PreOrderMenuItem {
+  preOrderId String
+  menuItemId String
+  quantity   Int      @default(1)
+  preOrder   PreOrder @relation(fields: [preOrderId], references: [id], onDelete: Cascade)
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+
+  @@id([preOrderId, menuItemId]) // Composite primary key
+}
+
+model User {
+  id        String     @id @default(uuid())
+  name      String
+  email     String     @unique
+  phone     String
+  password  String
+  role      String     @default("user") // "user" or "admin"
+  preOrders PreOrder[]
+}
+
+model Payment {
+  id         String   @id @default(uuid())
+  preOrderId String   @unique
+  paymentId  String   @unique
+  amountPaid Float
+  status     String   @default("captured") // "captured", "failed", "refunded"
+  createdAt  DateTime @default(now())
+
+  preOrder PreOrder @relation("PreOrderPayment", fields: [preOrderId], references: [id], onDelete: Cascade)
+}
+
+model Refund {
+  id             String   @id @default(uuid())
+  preOrderId     String   @unique
+  paymentId      String   @unique
+  refundId       String   @unique
+  amountRefunded Float
+  status         String   @default("processed") // "processed", "failed"
+  createdAt      DateTime @default(now())
+
+  preOrder PreOrder @relation("PreOrderRefund", fields: [preOrderId], references: [id], onDelete: Cascade)
+}

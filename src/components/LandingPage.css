@@ -1,0 +1,99 @@
+/* Reset some basic styles */
+body, html, .landing-container {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.landing-container {
+  background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 52px;
+  font-weight: bold;
+}
+
+.nav-buttons button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.nav-buttons button:hover {
+  background: white;
+  color: black;
+}
+
+/* Hero Section */
+.hero-content {
+  text-align: center;
+  margin: auto;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 32px;
+  color: white;
+}
+
+.hero-buttons button {
+  background-color: #ff6347;
+  border: none;
+  padding: 14px 28px;
+  margin: 0 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero-buttons button:hover {
+  background-color: #ff4500;
+}
+
+.hero-buttons .secondary {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.hero-buttons .secondary:hover {
+  background-color: white;
+  color: black;
+}
